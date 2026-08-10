@@ -11,23 +11,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initSnowflakes() {
   const container = document.getElementById('snowflake-container');
-  const flakeCount = 18;
-  const flakes = ['❄', '❅', '❆'];
+  if (!container) return;
+  container.innerHTML = ''; // 清空舊雪花
+
+  const flakeCount = 16; // 保持 16 朵，輕盈不卡頓
+
+  // 兩種極簡細緻的向量雪花 SVG 結構
+  const svgShapes = [
+    `<svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>`,
+    `<svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19M12 6l-2-2m4 0l-2 2M12 18l-2 2m4 0l-2-2M6 12l-2-2m0 4l2-2M18 12l2-2m0 4l-2-2"/></svg>`
+  ];
 
   for (let i = 0; i < flakeCount; i++) {
     const flake = document.createElement('div');
     flake.className = 'snowflake';
-    flake.innerText = flakes[Math.floor(Math.random() * flakes.length)];
     
-    const size = (Math.random() * 10 + 10) + 'px';
-    const left = Math.random() * 100 + 'vw';
-    const duration = (Math.random() * 5 + 8) + 's';
-    const delay = (Math.random() * 5) + 's';
-    const opacity = Math.random() * 0.6 + 0.3;
+    // 隨機選擇雪花樣式
+    flake.innerHTML = svgShapes[Math.floor(Math.random() * svgShapes.length)];
 
-    flake.style.fontSize = size;
+    const size = (Math.random() * 8 + 10) + 'px'; // 10px ~ 18px 精緻尺寸
+    const left = Math.random() * 100 + 'vw';
+    const duration = (Math.random() * 5 + 8) + 's'; // 慢速優雅飄落
+    const delay = (Math.random() * 6) + 's';
+    const opacity = Math.random() * 0.5 + 0.3; // 半透明低調漸層
+
+    flake.style.width = size;
+    flake.style.height = size;
     flake.style.left = left;
-    flake.style.animationDuration = `${duration}, 3s`;
+    flake.style.animationDuration = `${duration}, 3.5s`;
     flake.style.animationDelay = `${delay}, 0s`;
     flake.style.opacity = opacity;
 
