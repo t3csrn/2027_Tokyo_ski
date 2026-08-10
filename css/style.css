@@ -1,0 +1,666 @@
+/* --- 視覺配色與變數 --- */
+:root {
+  --bg-color: #f4f8fb;
+  --primary: #6da5c0;
+  --primary-light: #eef6f9;
+  --secondary: #f4d3d3;
+  --accent: #918ae2;
+  --text-main: #2b3a4a;
+  --text-muted: #8091a5;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --border-color: #e2ebf1;
+  --shadow: 0 8px 24px rgba(109, 165, 192, 0.12);
+  --radius: 20px;
+  --font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+}
+
+/* SVG Icon 通用樣式 */
+.icon-svg-sm {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  vertical-align: middle;
+}
+
+.icon-svg-md {
+  width: 20px;
+  height: 20px;
+  stroke: var(--primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  vertical-align: sub;
+  margin-right: 6px;
+}
+
+/* 雪花飄落 */
+#snowflake-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: #fff;
+  user-select: none;
+  opacity: 0.8;
+  text-shadow: 0 0 6px rgba(165, 210, 235, 0.8);
+  animation-name: fall, sway;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+@keyframes fall {
+  0% { top: -10px; }
+  100% { top: 105vh; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(20px); }
+}
+
+/* Header & Hero */
+.app-header {
+  padding: 16px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%);
+  border-radius: var(--radius);
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid #ffffff;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #475569;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.hero-card h1 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.hero-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  padding: 8px 16px;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+.countdown-box .label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.countdown-box .timer {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Floating Action Button */
+.fab-sheet-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Content & Layout */
+.app-content {
+  padding: 0 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+.info-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* Date Tab Bar */
+.date-tab-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  scrollbar-width: none;
+}
+.date-tab-bar::-webkit-scrollbar { display: none; }
+
+.date-btn {
+  flex: 0 0 auto;
+  min-width: 62px;
+  padding: 8px 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.date-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(109, 165, 192, 0.35);
+}
+
+.date-btn .week { font-size: 0.7rem; display: block; opacity: 0.85; }
+.date-btn .day { font-size: 0.95rem; font-weight: 700; }
+
+/* Timeline (時序對齊調整) */
+.timeline {
+  position: relative;
+  padding-left: 20px;
+  margin-top: 14px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid #fff;
+}
+
+.timeline-item.no-time::before {
+  background: var(--accent);
+}
+
+.timeline-item .time {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+
+.timeline-item .title {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.timeline-item .desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+}
+
+/* 圓潤質感客製化 Checkbox */
+.checklist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:active {
+  background: #e2e8f0;
+}
+
+.progress-container {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-bottom: 12px;
+}
+
+.complete-banner {
+  background: #e6f4ea;
+  color: #1e7e34;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.complete-banner.hidden { display: none; }
+
+.check-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+/* 客製化 Checkbox 圓角外觀 */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%; /* 圓潤按鈕 */
+  outline: none;
+  margin-right: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-checkbox:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.check-item label {
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.check-item.checked label {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Tables & Lists */
+.table-responsive { overflow-x: auto; }
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.custom-table th, .custom-table td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+.custom-table th { background: var(--primary-light); color: var(--primary); }
+
+.restaurant-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+}
+.restaurant-item h4 { font-size: 0.9rem; color: #1e293b; }
+.restaurant-item .tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-right: 4px;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  z-index: 1000;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 20%;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: all 0.2s ease;
+}
+
+.nav-btn.active .nav-icon {
+  stroke: var(--primary);
+}
+
+.nav-btn.active .label {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.nav-btn .label {
+  font-size: 0.65rem;
+  margin-top: 3px;
+}
+
+.pretrip-cat-block {
+  margin-bottom: 16px;
+  background: #fdfefe;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid #eef3f7;
+}
+
+.pretrip-cat-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--primary-light);
+  display: flex;
+  align-items: center;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 拉開三個項目的上下間距 */
+  margin-top: 12px;
+}
+
+.info-block {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.info-block h3 {
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.info-block p {
+  font-size: 0.83rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.info-block p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  max-width: 320px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  animation: modalPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-card h3 {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.modal-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-modal-cancel, .btn-modal-confirm {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-modal-cancel {
+  background: #f1f5f9;
+  color: var(--text-main);
+}
+
+.btn-modal-confirm {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.info-item {
+  font-size: 0.85rem; /* 微調至與全站卡片一致的級距 */
+  color: var(--text-main);
+  line-height: 1.5;
+  background: #fdfefe;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.info-item strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* 2. 修復滑雪指南項目符號（Bullet Points）太靠左與跑版問題 */
+.guide-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.guide-card h3 {
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.guide-card ul {
+  padding-left: 20px; /* 給予適當內縮，避免圓點貼邊 */
+  margin: 0;
+}
+
+.guide-card li {
+  font-size: 0.83rem; /* 縮小項目符號字體，保持精緻感 */
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.guide-card li strong {
+  color: #1e293b;
+}
