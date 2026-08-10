@@ -14,20 +14,20 @@ function initSnowflakes() {
   if (!container) return;
   container.innerHTML = '';
 
-  const flakeCount = 22; // 數量適中不卡頓
+  const flakeCount = 25; // 微小雪花數量稍微增加，保持畫面空氣感
 
   for (let i = 0; i < flakeCount; i++) {
     const flake = document.createElement('div');
     flake.className = 'snowflake';
 
-    const size = (Math.random() * 5 + 4) + 'px'; // 4px ~ 9px 精緻小雪粒
+    // 調小尺寸：2px ~ 5px 精細小雪粒
+    const size = (Math.random() * 3 + 2) + 'px'; 
     const left = Math.random() * 100 + 'vw';
-    const duration = (Math.random() * 6 + 8) + 's'; // 8s ~ 14s 慢速飄落
+    const duration = (Math.random() * 6 + 9) + 's'; // 慢速優雅飄落
     
-    // 🔥 關鍵修正：負數 animationDelay 讓動畫在載入時就處於播放中狀態
-    // 徹底解決雪花卡在頂部等待飄落的狀況！
+    // 負數 delay 確保一開啟網頁就均勻分佈全螢幕
     const negativeDelay = - (Math.random() * 10) + 's'; 
-    const opacity = Math.random() * 0.6 + 0.4;
+    const opacity = Math.random() * 0.5 + 0.3; // 半透明柔和質感
 
     flake.style.width = size;
     flake.style.height = size;
