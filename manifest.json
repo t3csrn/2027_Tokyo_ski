@@ -1,0 +1,17 @@
+{
+  "name": "2027 東京・越後湯澤滑雪旅行",
+  "short_name": "東京滑雪",
+  "description": "8人團體 2027 東京・越後湯澤滑雪旅行專用行程 App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f8fb",
+  "theme_color": "#7bb3d6",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

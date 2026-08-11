@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- 柔和雪國溫暖漸變背景 -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="50%" stop-color="#bae6fd" />
+      <stop offset="100%" stop-color="#fce7f3" />
+    </linearGradient>
+
+    <!-- 富士山/雪山漸變 -->
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#7bb3d6" />
+    </linearGradient>
+  </defs>
+
+  <!-- iOS / Android 圓角 App 圖示基底 -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad)" />
+
+  <!-- 圓形微光外框 -->
+  <circle cx="256" cy="256" r="210" fill="none" stroke="#ffffff" stroke-width="8" opacity="0.6" />
+
+  <!-- 雪山意象 (Snow Mountain) -->
+  <polygon points="256,120 120,360 392,360" fill="url(#mountainGrad)" />
+  <!-- 積雪山頂細節 -->
+  <polygon points="256,120 216,190 236,210 256,195 276,210 296,190" fill="#ffffff" />
+
+  <!-- 頂部文青質感雪花晶體 -->
+  <g stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.95">
+    <line x1="256" y1="50" x2="256" y2="90" />
+    <line x1="236" y1="70" x2="276" y2="70" />
+    <line x1="242" y1="56" x2="270" y2="84" />
+    <line x1="270" y1="56" x2="242" y2="84" />
+  </g>
+
+  <!-- 底部簡潔旅行標記文字 -->
+  <text x="256" y="425" 
+        font-family="'Montserrat', 'Noto Sans TC', sans-serif" 
+        font-size="42" 
+        font-weight="700" 
+        fill="#2c3e50" 
+        letter-spacing="6" 
+        text-anchor="middle">TOKYO SKI</text>
+</svg>
