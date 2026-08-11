@@ -526,3 +526,89 @@ body {
 }
 .btn-modal-cancel { background: #f1f5f9; color: var(--text-main); }
 .btn-modal-confirm { background: #ef4444; color: #fff; }
+
+/* --- 1. 資訊頁面 (Tab 5) 區塊間距與文字行高優化 --- */
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px !important; /* 確保三個區塊之間有足夠間距 */
+  margin-top: 12px;
+}
+
+.info-block {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px !important; /* 增加內部留白 */
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.info-block h3 {
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 10px !important; /* 標題與內文分開 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-block p {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin-bottom: 6px !important; /* 行與行之間的距離 */
+  line-height: 1.6 !important; /* 增加文字行高，閱讀更輕鬆 */
+}
+
+/* --- 2. 滑雪指南 (Tab 2) 項目符號與文字間距優化 --- */
+.guide-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px !important; /* 兩大組指南之間的間距 */
+  margin-top: 12px;
+}
+
+.guide-card h3 {
+  font-size: 0.92rem;
+  color: var(--primary);
+  margin-bottom: 12px !important; /* 小標題與列表間距 */
+  font-weight: 700;
+}
+
+.guide-card ul {
+  padding-left: 24px !important; /* 修正：充裕內縮，避免圓點貼邊跑版 */
+  margin: 0 !important;
+}
+
+.guide-card li {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin-bottom: 10px !important; /* 每個清單項目之間的間距 */
+  line-height: 1.6 !important; /* 增加行高 */
+}
+
+.guide-card li strong {
+  color: #1e293b;
+}
+
+/* 石打丸山資訊清單行高與間距 */
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important; /* 縮小垂直間隔，緊湊適中 */
+  margin-top: 10px;
+}
+
+.info-item {
+  font-size: 0.83rem;
+  line-height: 1.5 !important;
+  background: var(--primary-light) !important; /* 加上淡藍背景襯托 */
+  padding: 10px 12px !important;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.info-item strong {
+  color: var(--primary);
+  font-weight: 700;
+}
