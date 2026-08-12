@@ -444,31 +444,36 @@ body {
   margin-right: 4px;
 }
 
-/* Bottom Navigation */
-/* 精準微調 iPhone 17 底部導覽列高度 */
+/* --- 懸浮膠囊型 Bottom Navigation --- */
 .bottom-nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* 將原本預設的 12px 縮減為 6px~8px，完美貼合系統橫條 */
-  padding-bottom: env(safe-area-inset-bottom, 8px);
-  padding-top: 8px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* 利用 calc 計算懸浮高度，避開 iPhone 底部 Safe Area */
+  bottom: calc(12px + env(safe-area-inset-bottom, 8px));
+  left: 16px;
+  right: 16px;
+  max-width: 500px; /* 控制膠囊最大寬度 */
+  margin: 0 auto;
+  
+  height: 64px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* 膠囊大圓角與柔和懸浮陰影 */
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(109, 165, 192, 0.15);
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid var(--border-color);
   z-index: 1000;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
-/* 內容區底部的間距同步微調 */
+/* 內容區域底部留白同步調高，避免被懸浮列遮住最後一塊卡片 */
 body {
-  padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(95px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
 .nav-btn {
