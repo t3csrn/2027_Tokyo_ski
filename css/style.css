@@ -453,7 +453,7 @@ body {
   right: 0;
   /* 將原本預設的 12px 縮減為 6px~8px，完美貼合系統橫條 */
   padding-bottom: env(safe-area-inset-bottom, 8px);
-  padding-top: 6px;
+  padding-top: 8px;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
