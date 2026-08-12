@@ -445,15 +445,15 @@ body {
 }
 
 /* Bottom Navigation */
-/* 修正 iPhone 底部 Home Bar / 圓角遮擋問題 */
+/* 精準微調 iPhone 17 底部導覽列高度 */
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  /* 動態計算 padding-bottom：自動加上 iPhone 底部的安全區域高度 */
-  padding-bottom: env(safe-area-inset-bottom, 12px);
-  min-height: calc(64px + env(safe-area-inset-bottom, 0px));
+  /* 將原本預設的 12px 縮減為 6px~8px，完美貼合系統橫條 */
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+  padding-top: 6px;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -466,9 +466,9 @@ body {
   margin: 0 auto;
 }
 
-/* 同時讓頁面內容的最下方留白增加，避免被變高的導覽列遮住 */
+/* 內容區底部的間距同步微調 */
 body {
-  padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
 .nav-btn {
