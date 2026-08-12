@@ -153,22 +153,29 @@ body {
 /* Floating Action Button */
 .fab-sheet-btn {
   position: fixed;
-  top: 16px;
+  /* 自動加上頂部安全距離，預設為 16px + safe-area */
+  top: calc(16px + env(safe-area-inset-top, 0px));
   right: 16px;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--text-main);
   border: 1px solid var(--border-color);
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+}
+
+/* 同時讓頂部 Header 容器適度往下推開，避免 Hero 卡片頂到 Status Bar */
+.app-header {
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 16px 16px;
 }
 
 /* Content & Layout */
